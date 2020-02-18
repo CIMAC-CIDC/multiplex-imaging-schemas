@@ -21,7 +21,7 @@ The image stack is a set of images, represented as an nxWxH matrix where **n** i
 ## aquisition-properties
 These are meta-data associated with the aquisition of the image. These can include variables such as the zoom, the pixel density, exposure time, dwell time etc...
 
-**proposal:** We identify required / common parameters which are necessary to properly quantify the image, or display them in common viewers, and make these required. Then we provide a mechnaism to submit other parameters with no control.
+**proposal:** Identify required / common parameters which are necessary to properly quantify the image, or display them in common viewers, and make these required. Then we provide a mechnaism to submit other parameters with no control.
 ```
 required = {
   "pixels_per_cm": int,
@@ -29,6 +29,11 @@ required = {
   "channel_colors_rgb": [str,*],
 }
 ```
+
+## technical-masking
+This is a way to annotate which pixels in the **image-stack** are to be included in any subsequent analysis. This masking is technical in nature and the areas excluded should be irrelavent to the analysis because they do not meet some quality check, have experimental artifacts, or are simply not applicable.
+
+**proposal:** 
 
 
 
