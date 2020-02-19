@@ -98,7 +98,11 @@ phenotypes = {
 ## reports
 TODO: What is art?
 
+# Imaging platforms
 
+These are the actual experiments which generate the multi-plexed imaging. Each experimental paradigm and technology generates a different set of the these components. For example a whole slide paradigm does not require ROI component, however an ROI based method does.
+
+A definition of the imaging platform is essentialy a set of the imaging componenets requried to capture data from the given platform.
 
 
 
