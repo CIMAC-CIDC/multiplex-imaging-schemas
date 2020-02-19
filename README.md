@@ -76,6 +76,29 @@ phenotypes = {
 }
 ```
 
+## phenotype
+Annotation of each cell identified in the segmentation step to classify it as a predefined phenotype. Phenotypes include something like PD-L1+, meaning that marker is considered positive in a given cell. They may also include a combination of multiple markers, i.e. Tumor+/PD-L1+ or Tumor+/PD-L1 negative. There maybe complex definitions of the state of a given cell, i.e. some thiing like an intermediate state, may exist between positive or negative. We should anticipate updating the set of allowable values.
+
+**proposal:** There should be a controlled form for submitting measured phenotypes where each value is checked against allowable types.
+```
+phenotypes = {
+  "PD-L1+": [
+      {
+        "marker": "PD-L1",
+        "value": "+"
+      },
+      {
+        "marker": "Cytokeratin",
+        "value": "+"
+      },
+    ]
+}
+```
+
+## reports
+TODO: What is art?
+
+
 
 
 
