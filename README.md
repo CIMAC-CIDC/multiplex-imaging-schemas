@@ -22,8 +22,6 @@ Each layer of the **image-stack** represent the measurement of one protein or "m
 
 **proposal:** Enumerate common markers, use similar CIDC mechanisms for doing this.
 
-- The standardized OME-TIFF file where the image can be loaded into common commercial and open-source imaging applications, the channel names and prefered colors are preserved if possible.
-
 ## aquisition-properties
 These are meta-data associated with the aquisition of the image. These can include variables such as the zoom, the pixel density, exposure time, dwell time etc...
 
