@@ -17,6 +17,13 @@ The image stack is a set of images, represented as an nxWxH matrix where **n** i
 
 - The standardized OME-TIFF file where the image can be loaded into common commercial and open-source imaging applications, the channel names and prefered colors are preserved if possible.
 
+## channel-definition
+Each layer of the **image-stack** represent the measurement of one protein or "marker". The defintions and metadata associated with these markers should be defined. A linkage between the channel and the index of the data in the **image-stack** should be specified. The marker defintions should be centrally controlled, in that almost all possible markers are known (because there needs to be an antibody), although parameters of the marker may differ... For example for PD-L1, the name PD-L1 is common, but the antibody may be from Ventana or Dako, and it may have lot #xyz, incubation time of #abc.
+
+**proposal:** Enumerate common markers, use similar CIDC mechanisms for doing this.
+
+- The standardized OME-TIFF file where the image can be loaded into common commercial and open-source imaging applications, the channel names and prefered colors are preserved if possible.
+
 ## aquisition-properties
 These are meta-data associated with the aquisition of the image. These can include variables such as the zoom, the pixel density, exposure time, dwell time etc...
 
@@ -46,9 +53,14 @@ This is a way to annotate biologically relavent areas of the image. Each region 
 **proposal:** The array should be boolean and match the height/width dimensions of the **image-stack**. A small amount of meta information describing each mask i.e. how it was created, date it was created, inclusionary/exclusionary, an enum specifying the mask intent (tumor, stroma, etc...).
 
 ## roi-selection
-This is a step where ROIs are selected from the source **image-stack**. The ROI selection will involved specifying a polygone of the area considered to be an ROI, along with a name of the ROI. Since the ROI may be obtained by scanning the source material at a higher resolution, we do not explicitly store pixels in this representation.
+This is a step where ROIs are selected from the source **image-stack**. The ROI selection will involved specifying a polygone of the area considered to be an ROI, along with a name of the ROI. Since the ROI may be obtained by scanning the source material at a higher resolution, we also need to explicitly store the ROI image stacks.
 
-**proposal:** A set of list of polygons (in whatever format polygons can be defined ... i.e. scikit-image). Each polygon can be used to determine which of the pixels in the **image-stack** are in a given ROI. Also each ROI should have a small amount of metadata specifying how the ROI was anntoated, when and an enum marking up the purpose of the ROI.
+**proposal:** A set of image stacks, polygons (in whatever format polygons can be defined ... i.e. scikit-image). Each polygon can be used to determine which of the pixels in the whole slide **image-stack** are in a given ROI. Also each ROI should have a small amount of metadata specifying how the ROI was anntoated, when and an enum marking up the purpose of the ROI. The ROI image stacks should be the same datatype as the whole slide image stack.
+
+## phenotype
+Annotation of each cell identified in the segmentation step to classify it as a predefined phenotype. Phenotypes include something like PD-L1+, meaning that marker is considered positive in a given cell. They may also include a combination of multiple markers, i.e. Tumor+/PD-L1+ or Tumor+/PD-L1 negative. There maybe complex definitions of the state of a given cell, i.e. some thiing like an intermediate state, may exist between positive or negative. 
+
+**proposal:** There should be a set of predefined phenotypes which are commonly used and be easily referenced when describing eac
 
 
 
