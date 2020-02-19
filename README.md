@@ -58,9 +58,23 @@ This is a step where ROIs are selected from the source **image-stack**. The ROI 
 **proposal:** A set of image stacks, polygons (in whatever format polygons can be defined ... i.e. scikit-image). Each polygon can be used to determine which of the pixels in the whole slide **image-stack** are in a given ROI. Also each ROI should have a small amount of metadata specifying how the ROI was anntoated, when and an enum marking up the purpose of the ROI. The ROI image stacks should be the same datatype as the whole slide image stack.
 
 ## phenotype
-Annotation of each cell identified in the segmentation step to classify it as a predefined phenotype. Phenotypes include something like PD-L1+, meaning that marker is considered positive in a given cell. They may also include a combination of multiple markers, i.e. Tumor+/PD-L1+ or Tumor+/PD-L1 negative. There maybe complex definitions of the state of a given cell, i.e. some thiing like an intermediate state, may exist between positive or negative. 
+Annotation of each cell identified in the segmentation step to classify it as a predefined phenotype. Phenotypes include something like PD-L1+, meaning that marker is considered positive in a given cell. They may also include a combination of multiple markers, i.e. Tumor+/PD-L1+ or Tumor+/PD-L1 negative. There maybe complex definitions of the state of a given cell, i.e. some thiing like an intermediate state, may exist between positive or negative. We should anticipate updating the set of allowable values.
 
-**proposal:** There should be a set of predefined phenotypes which are commonly used and be easily referenced when describing eac
+**proposal:** There should be a controlled form for submitting measured phenotypes where each value is checked against allowable types.
+```
+phenotypes = {
+  "PD-L1+": [
+      {
+        "marker": "PD-L1",
+        "value": "+"
+      },
+      {
+        "marker": "Cytokeratin",
+        "value": "+"
+      },
+    ]
+}
+```
 
 
 
